@@ -814,6 +814,7 @@ Form.Field = Backbone.View.extend({
       title: schema.title,
       fieldAttrs: schema.fieldAttrs,
       editorAttrs: schema.editorAttrs,
+      i18n: schema.i18n,
       key: this.key,
       editorId: this.editor.id
     };
@@ -948,7 +949,7 @@ Form.Field = Backbone.View.extend({
 
   template: _.template('\
     <div>\
-      <label for="<%= editorId %>"><%= title %></label>\
+      <label for="<%= editorId %>" data-i18n="<%= i18n %>"><%= title %></label>\
       <div>\
         <span data-editor></span>\
         <div data-error></div>\
@@ -1721,11 +1722,11 @@ Form.editors.Radio = Form.editors.Select.extend({
       var itemHtml = '<li>';
       if (_.isObject(option)) {
         var val = (option.val || option.val === 0) ? option.val : '';
-        itemHtml += ('<input type="radio" name="'+self.id+'" value="'+val+'" id="'+self.id+'-'+index+'" />');
+        itemHtml += ('<input type="radio" name="'+self.getName()+'" value="'+val+'" id="'+self.id+'-'+index+'" />');
         itemHtml += ('<label for="'+self.id+'-'+index+'">'+option.label+'</label>');
       }
       else {
-        itemHtml += ('<input type="radio" name="'+self.id+'" value="'+option+'" id="'+self.id+'-'+index+'" />');
+        itemHtml += ('<input type="radio" name="'+self.getName()+'" value="'+option+'" id="'+self.id+'-'+index+'" />');
         itemHtml += ('<label for="'+self.id+'-'+index+'">'+option+'</label>');
       }
       itemHtml += '</li>';
@@ -1807,11 +1808,11 @@ Form.editors.Checkboxes = Form.editors.Select.extend({
       var itemHtml = '<li>';
       if (_.isObject(option)) {
         var val = (option.val || option.val === 0) ? option.val : '';
-        itemHtml += ('<input type="checkbox" name="'+self.id+'" value="'+val+'" id="'+self.id+'-'+index+'" />');
+        itemHtml += ('<input type="checkbox" name="'+self.getName()+'" value="'+val+'" id="'+self.id+'-'+index+'" />');
         itemHtml += ('<label for="'+self.id+'-'+index+'">'+option.label+'</label>');
       }
       else {
-        itemHtml += ('<input type="checkbox" name="'+self.id+'" value="'+option+'" id="'+self.id+'-'+index+'" />');
+        itemHtml += ('<input type="checkbox" name="'+self.getName()+'" value="'+option+'" id="'+self.id+'-'+index+'" />');
         itemHtml += ('<label for="'+self.id+'-'+index+'">'+option+'</label>');
       }
       itemHtml += '</li>';
