@@ -10,6 +10,11 @@
  * License and more information at:
  * http://github.com/powmedia/backbone-forms
  */
+
+/**
+ * NOTE: This is a fork of backbone-forms that injects data-i18n attributes into labels
+ * for localization support. The fork is located at https://github.com/cluebcke/backbone-forms
+ */
 define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 
   {{body}}
